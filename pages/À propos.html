@@ -4,23 +4,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
     <link href="../css/output.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <title>FoodOrder+</title>
+    <link href="../css/components/header/styles.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/components/footer/styles.css" />
+
 </head>
 
 <body class="bg-black text-white">
-    <header>
-        <nav class="grid ">
-            <a href=""><img src="../assets/FOODORDER+.png" alt="Logo"></a>
-            <a href="">Home</a>
-            <a href="">About us</a>
-            <a href="">Product</a>
-            <a href=""><i class="fa-solid fa-cart-shopping text-white"></i></a>
+    <header style="background-image: url(../assets/background-1.jpg);">
+        <nav class="navbar">
+            <div class="logo">
+                FOODORDER
+                <span class="plus">+</span>
+            </div>
+
+            <i class="fa-solid fa-bars menu-icon" id="menu-toggle"></i>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="#">Product</a></li>
+                <li><a href="#" style="color: #ff9d00;">About</a></li>
+            </ul>
+            <div class="cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </div>
         </nav>
-        <img src="../assets/background-1.jpg" alt="restaurant"
-            class="w-full h-full object-cover brightness-50" />
+        <img src="../assets/background-2.png" alt="restaurant" class="w-full h-full object-cover" />
     </header>
     <section class="p-20 text-center">
         <h1 class="text-4xl font-bold mb-10">Our Chefs</h1>
@@ -30,59 +41,113 @@
             <img src="../assets/Chef-3.png" alt="Chef-3">
         </div>
     </section>
-    <section class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 p-8">
+    <section class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-8 p-8">
         <div>
-            <h1 class="text-4xl font-bold mb-10">Get in Touch</h1>
-            <p>We'd love to hear from you.Whether you’d like to make a reservation,plan a private event, or simply ask a
-                question.our team is here to help.</p>
-            <hr>
+            <h1 class="text-4xl font-bold mb-6 ml-6">Get in Touch</h1>
+            <p class="text-gray-300 text-xl mb-6">We'd love to hear from you.Whether you’d like to make a
+                reservation,plan a private event, or simply ask a question.our team is here to help.</p>
+            <hr class="border-orange-500 border-t-1">
+            <div class="grid md:grid-cols-2 mt-3 gap-6 sm:grid-cols-1">
+                <div class="grid grid-cols-2 md:grid-cols-[1fr_2fr]  gap-0">
+                    <i class="fa-regular fa-clock text-5xl" style="color: #ff9d00;"></i>
+                    <div>
+                        <p>Open 6PM </p>
+                        <p>Close 2AM</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2  md:grid-cols-[1fr_2fr]">
+                    <i class="fa-regular fa-envelope text-5xl" style="color: #ff9d00;"></i>
+                    <div>
+                        <p>FOODORDER@food.ma</p>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="grid grid-cols-2  md:ml-36 md:grid-cols-[1fr_4fr] sm:grid-cols-[1fr_1fr] mt-6 mb-8  mr-0">
+                <i class="fa-solid fa-phone text-5xl " style="color: #ff9d00;"></i>
+                <div>
+                    <p>+212 666666666</p>
+                    <p>+212 555555555</p>
+                </div>
+
+            </div>
+
+
+            <hr class="border-orange-500 border-t-1">
+            <i class="fa-brands fa-whatsapp text-5xl m-5 cursor-pointer" style="color: #ff9d00;"></i>
+            <i class="fa-brands fa-instagram text-5xl m-5 cursor-pointer" style="color: #ff9d00;"></i>
+            <i class="fa-brands fa-facebook text-5xl m-5 cursor-pointer" style="color: #ff9d00;"></i>
+            <i class="fa-brands fa-tiktok text-5xl m-5 cursor-pointer" style="color: #ff9d00;"></i>
         </div>
         <div>
-            <h1 class="text-4xl font-bold mb-6">Contact Us</h1>
-            <form action="" class="space-y-4">
+            <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
+            <form action="" id="formule" class="space-y-4">
                 <div class="grid grid-cols-2 sm:grid-cols-2">
-                    <input class="p-3 bg-transparent border border-gray-600 rounded-lg w-full" type="text" placeholder="Name">
-                    <input class="p-3 bg-transparent border border-gray-600 rounded-lg w-full" type="email" placeholder="email@email.com">
+                    <input id="name"
+                        class="p-3 bg-transparent border border-gray-600 hover:border-amber-600 rounded-lg w-full"
+                        type="text" placeholder="Name">
+                    <input id="email"
+                        class="p-2 ml-2 bg-transparent border border-gray-600 hover:border-amber-600 rounded-lg"
+                        type="email" placeholder="email@email.com">
                 </div>
-                
-                <input class="p-3 bg-transparent border border-gray-600 rounded-lg w-full" type="text" placeholder="Subject">
-                <textarea class="p-3 bg-transparent border border-gray-600 rounded-lg w-full" name="Question" placeholder="Question"></textarea>
+                <input id="subject"
+                    class="p-3 bg-transparent border border-gray-600 hover:border-amber-600 rounded-lg w-full"
+                    type="text" placeholder="Subject">
+                <textarea id="question"
+                    class="p-4 bg-transparent border border-gray-600 hover:border-amber-600 rounded-lg w-full"
+                    name="Question" placeholder="Question"></textarea>
+                    <button type="submit"
+                        class="bg-orange-500 hover:bg-gray-600 py-2 px-20 rounded-lg font-semibold sm:m">Contact
+                        Us</button>
             </form>
-            <button type="submit" class="bg-orange-500 hover:bg-orange-600 p-8 py-3 rounded-lg font-semibold">Contact Us</button>
         </div>
     </section>
-    <section>
-        <iframe
-            src="https://www.bing.com/maps?&ty=30&q=safi&satid=id.sid%3A4538d2da-50ed-e182-7a99-b7d28747c0e6&vdpid=8115041831433011227&mb=32.287641~-9.241669~32.279006~-9.225018&cardbg=%23FFFFFF&tt=Safi%2C%20Marrakech-Safi%2C%20Maroc&tsts0=%2526ty%253D30%2526q%253Dsafi%2526satid%253Did.sid%25253A4538d2da-50ed-e182-7a99-b7d28747c0e6%2526vdpid%253D8115041831433011227%2526mb%253D32.287641~-9.241669~32.279006~-9.225018%2526cardbg%253D%252523FFFFFF&tstt0=Safi%2C%20Marrakech-Safi%2C%20Maroc&cp=32.281582~-9.239175&lvl=14.768269&pi=0&ftst=0&ftics=False&v=2&sV=2&form=S00027"
-            frameborder="0" title="maps">
-        </iframe>
+    <section class="m-10 mb-24">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345094746!2d144.95373531531788!3d-37.81627917975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf5774a1d9b0c8f0!2sMelbourne!5e0!3m2!1sen!2sau!4v1600744278927!5m2!1sen!2sau" class="w-2/4 place-self-center" width="560" height="350"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            class="w-2/4 place-self-center"></iframe>
+        <div class="grid grid-cols-2 md:grid-cols-[1fr_3fr] mt-2 place-self-center gap-3">
+            <i class="fa-solid fa-map-location-dot text-4xl" style="color: #ff9d00;"></i>
+            <p class="mt-2">Safi, Morocco</p>
+        </div>
     </section>
 
-    <section>
-        <div>
-            <h1>FAQ</h1>
-            <p>We'd love to hear from you. Whether you’d like to make a reservation.</p>
+    <section class="grid grid-cols-2 gap-4 mb-20">
+        <div class="justify-center mt-20">
+            <h1 class="text-4xl font-bold mb-4 text-center">FAQ</h1>
+            <p class="text-2xl text-center">We'd love to hear from you. Whether you’d like to make a reservation.</p>
         </div>
         <div>
-            <details>
-                <summary></summary>
+            <details class="bg-gray-800 p-8 m-6 mb-0 mr-12">
+                <summary class="flex justify-between">How can I make a reservation? <i class="fa-regular fa-circle-down"></i></summary>
+                <p>You can book a table directly on our website by clicking “Reserve a Table” or by calling us at +62
+                    821 224 557 900.</p>
             </details>
-            <details>
-                <summary></summary>
+            <details class="bg-gray-800 p-8 m-6 mt-0 mb-0 mr-12">
+                <summary class="flex justify-between">What are your opening hours? <i class="fa-regular fa-circle-down"></i>
+                </summary>
+                <p>We’re open daily from 4:00 PM to 1:00 AM (WITA).</p>
             </details>
-            <details>
-                <summary></summary>
+            <details class="bg-gray-800 p-8 m-6 mt-0 mr-12">
+                <summary class="flex justify-between">Do you offer delivery or takeaway? <i class="fa-regular fa-circle-down"></i></summary>
+                <p>Yes! You can order online through FoodOrder+ Delivery or call us for takeaway options.</p>
             </details>
         </div>
     </section>
-    <footer>
-        <div>
-            <a href=""><img src="" alt=""></a>
-            <a href="">Home</a>
-            <a href="">Product</a>
-            <a href="">About us</a>
+    <footer class="site-footer">
+        <div class="footer-wrap">
+            <div class="brand">FOODORDER<span class="plus">+</span></div>
+
+            <nav class="footer-nav" aria-label="Footer">
+                <a href="#">Home</a>
+                <a href="#">Product</a>
+                <a href="#">About us</a>
+            </nav>
         </div>
     </footer>
+
+    <script src="../js/components/header.js"></script>
+    <script src="../js/Àpropos.js"></script>
 
 </body>
 
