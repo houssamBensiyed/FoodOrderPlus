@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>panier</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/components/panier/panier.css" />
+  </head>
+  <body>
+    <!-- <div class="panier_vide">
+      <em class="fas fa-basket-shopping"></em>
+      <p class="vide">Votre painier est vide</p>
+    </div> -->
+
+    <!-- panier card container -->
+
+    <section class="panier">
+      <div class="panier_container">
+        <div class="panier_card">
+          <div class="panier_header">
+            <h1 class="title">Votre Panier</h1>
+            <div class="close_btn">
+              <span id="close"><em class="fa fa-close"></em></span>
+            </div>
+          </div>
+          <div class="panier_element">
+            <div class="image">
+              <img src="./lule-kebab-avec-des-legumes-frits.jpg" alt="" />
+            </div>
+            <div class="center">
+              <h5 class="order_title">FILET DE BOEUF WELLINGTON</h5>
+              <p class="order_panier_description">Beef femtie eoniken fnens</p>
+              <div class="price_order_control">
+                <strong>€20.00</strong>
+                <div class="btn_control">
+                  <button id="decrement_counter">-</button>
+                  <span id="counter">2</span>
+                  <button id="increment_counter">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="remove">
+              <span id="delete_order">
+                <em class="fas fa-trash-can"></em>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="panier_command">
+          <div class="total">
+            <div class="left_content_card">
+              <p>Sous-total:</p>
+              <p>Taxes:</p>
+              <p>Total TTC:</p>
+            </div>
+            <div class="right_content_card">
+              <p id="sous_total">€124.00</p>
+              <h4 id="total_ttc">€136.40</h4>
+            </div>
+          </div>
+          <div class="btn_command">
+            <button id="command_btn">commander</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
