@@ -18,15 +18,24 @@
       referrerpolicy="no-referrer"
     />
 
+    <!-- These styles are loaded -->
     <link rel="stylesheet" href="../css/components/header/styles.css" />
     <link rel="stylesheet" href="../css/components/footer/styles.css" />
-
     <link rel="stylesheet" href="../css/pageDetails/styles.css" />
 
-    <style></style>
+    <style>
+      /* Your pageDetails/styles.css is loaded via the <link> tag.
+        The shimmer/skeleton CSS should be in that file.
+      */
+    </style>
   </head>
 
   <body>
+    <!-- 
+      UPDATED HEADER: 
+      I've added the full 'panier_container' block inside this header, 
+      right after the </nav> tag. This fixes the 'null' error.
+    -->
     <header class="header">
       <nav class="navbar">
         <div class="logo">FOODORDER <span class="plus">+</span></div>
@@ -43,7 +52,47 @@
           <i class="fa-solid fa-cart-shopping"></i>
         </div>
       </nav>
+
+      <!-- 
+        START: Added Cart HTML
+        This is the missing block that caused the error.
+      -->
+      <div class="panier_container">
+        <div class="panier_card">
+          <div class="panier_header">
+            <h1 class="title">Votre Panier</h1>
+            <div class="close_btn">
+              <span id="close"><em class="fa fa-close"></em></span>
+            </div>
+          </div>
+          <!-- This is where JS will add items -->
+          <div class="card_container"></div>
+        </div>
+        <div class="panier_command">
+          <div class="total">
+            <div class="left_content_card">
+              <p>Sous-total:</p>
+              <!-- "Taxes" line removed -->
+              <p>Total TTC:</p>
+            </div>
+            <div class="right_content_card">
+              <!-- Totals zeroed out -->
+              <p id="sous_total">€0.00</p>
+              <h4 id="total_ttc">€0.00</h4>
+            </div>
+          </div>
+          <div class="btn_command">
+            <button id="command_btn">commander</button>
+          </div>
+        </div>
+      </div>
+      <!-- END: Added Cart HTML -->
     </header>
+
+    <!-- 
+      This is the rest of your original page.
+      No changes were made below this point.
+    -->
 
     <main class="wrap">
       <section class="gallery">
@@ -197,6 +246,8 @@
         </nav>
       </div>
     </footer>
+
+    <!-- Scripts are loaded at the end -->
     <script src="../js/components/header.js"></script>
     <script src="../js/pageDetails.js"></script>
   </body>
