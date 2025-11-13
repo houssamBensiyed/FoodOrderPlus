@@ -1,3 +1,12 @@
+fetch("../components/header.html")
+  .then(r => r.text())
+  .then(html => document.getElementById("header").innerHTML = html);
+
+fetch("../components/footer.html")
+  .then(r => r.text())
+  .then(html => document.getElementById("footer").innerHTML = html);
+
+
 const slides = [
   {
     img: "./assets/home/carousel-1.jpg",
