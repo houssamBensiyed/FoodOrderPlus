@@ -108,7 +108,7 @@ if (input) {
 
     if (product) {
       document.title = `${product.name} – FoodOrder+ Product`;
-      $(".title").textContent = product.name || "Produit";
+      $("#title").textContent = product.name || "Produit";
       $(".badge").textContent = product.category || "category";
       $(".price").textContent = money(product.price);
       $(".desc").textContent = product.description || "";
