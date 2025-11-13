@@ -1,4 +1,3 @@
-
 const menuIcon = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
@@ -28,7 +27,6 @@ close_btn.addEventListener("click", () => {
   panier_container.classList.remove("show");
 });
 
-
 const add_btn = document.getElementById("add");
 
 add_btn.addEventListener("click", (e) => {
@@ -36,47 +34,44 @@ add_btn.addEventListener("click", (e) => {
   let [image, title, description, price] = children;
 
   let newItem = {
-    id: Date.now(), 
+    id: Date.now(),
     image_card: image.src,
     title_card: title.textContent,
     description_card: description.textContent,
     price_card: price.textContent,
-    quantity: 1
+    quantity: 1,
   };
 
-  
-  const existingItemIndex = cartItems.findIndex(item => 
-    item.title_card === newItem.title_card && 
-    item.price_card === newItem.price_card
+  const existingItemIndex = cartItems.findIndex(
+    (item) =>
+      item.title_card === newItem.title_card &&
+      item.price_card === newItem.price_card
   );
 
   if (existingItemIndex !== -1) {
-    
-
     cartItems[existingItemIndex].quantity += 1;
   } else {
-  
     cartItems.push(newItem);
   }
 
-  // Save to localStorage 
+  // Save to localStorage
   localStorage.setItem("data_card", JSON.stringify(cartItems));
   displayCartItems();
 });
 
 // Display cart items
 function displayCartItems() {
-  card_container.innerHTML = '';
-  
+  card_container.innerHTML = "";
+
   if (cartItems.length === 0) {
-    card_container.innerHTML = '<p>Your cart is empty</p>';
+    card_container.innerHTML = "<p>Your cart is empty</p>";
     updateTotals();
     return;
   }
 
   cartItems.forEach((item, index) => {
-    const itemElement = document.createElement('div');
-    itemElement.className = 'panier_element';
+    const itemElement = document.createElement("div");
+    itemElement.className = "panier_element";
     itemElement.innerHTML = `
       <div class="image">
         <img src="${item.image_card}" alt="${item.title_card}" />
@@ -108,24 +103,28 @@ function displayCartItems() {
 // Update quantity and totals
 function updateTotals() {
   let subtotal = 0;
-  
-  cartItems.forEach(item => {
-    const priceValue = parseFloat(item.price_card.replace('€', '').replace(',', '.'));
+
+  // Calculate the subtotal based on items
+  cartItems.forEach((item) => {
+    const priceValue = parseFloat(
+      item.price_card.replace("€", "").replace(",", ".")
+    );
     subtotal += priceValue * item.quantity;
   });
-  
-  const taxRate = 0.1; // 10% tax
-  const taxes = subtotal * taxRate;
-  const total = subtotal + taxes;
-  
+
+  // --- CHANGE START: Removed Tax Logic ---
+  // The total is now simply equal to the subtotal
+  const total = subtotal;
+  // --- CHANGE END ---
+
   // Update DOM elements
   const sousTotalElement = document.getElementById("sous_total");
   const totalTtcElement = document.getElementById("total_ttc");
-  
+
   if (sousTotalElement) {
     sousTotalElement.textContent = `€${subtotal.toFixed(2)}`;
   }
-  
+
   if (totalTtcElement) {
     totalTtcElement.textContent = `€${total.toFixed(2)}`;
   }
@@ -133,9 +132,9 @@ function updateTotals() {
 
 // Events
 card_container.addEventListener("click", (e) => {
-  const index = parseInt(e.target.getAttribute('data-index'));
-  
-  if (e.target.classList.contains('decrement_counter')) {
+  const index = parseInt(e.target.getAttribute("data-index"));
+
+  if (e.target.classList.contains("decrement_counter")) {
     if (cartItems[index].quantity > 1) {
       cartItems[index].quantity -= 1;
     } else {
@@ -144,17 +143,17 @@ card_container.addEventListener("click", (e) => {
     }
     localStorage.setItem("data_card", JSON.stringify(cartItems));
     displayCartItems();
-  }
-  
-  else if (e.target.classList.contains('increment_counter')) {
+  } else if (e.target.classList.contains("increment_counter")) {
     cartItems[index].quantity += 1;
     localStorage.setItem("data_card", JSON.stringify(cartItems));
     displayCartItems();
-  }
-  
-  else if (e.target.classList.contains('delete_order') || 
-           e.target.closest('.delete_order')) {
-    const deleteIndex = parseInt(e.target.closest('.delete_order').getAttribute('data-index'));
+  } else if (
+    e.target.classList.contains("delete_order") ||
+    e.target.closest(".delete_order")
+  ) {
+    const deleteIndex = parseInt(
+      e.target.closest(".delete_order").getAttribute("data-index")
+    );
     cartItems.splice(deleteIndex, 1);
     localStorage.setItem("data_card", JSON.stringify(cartItems));
     displayCartItems();
@@ -169,9 +168,9 @@ if (command_btn) {
       alert("Your cart is empty!");
       return;
     }
-    
+
     alert("Order placed successfully!");
-    
+
     // Clear cart after successful order
     cartItems = [];
     localStorage.removeItem("data_card");
