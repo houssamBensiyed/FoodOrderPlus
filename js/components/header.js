@@ -1,11 +1,13 @@
 const menuIcon = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
-menuIcon.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-  menuIcon.classList.toggle("fa-bars");
-  menuIcon.classList.toggle("fa-xmark");
-});
+if (menuIcon) {
+  menuIcon.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    menuIcon.classList.toggle("fa-bars");
+    menuIcon.classList.toggle("fa-xmark");
+  });
+}
 
 // Cart functionality
 const panier_container = document.querySelector(".panier_container");
@@ -17,54 +19,73 @@ const card_container = document.querySelector(".card_container");
 let cartItems = JSON.parse(localStorage.getItem("data_card")) || [];
 
 // Display cart items on load
-displayCartItems();
+if (card_container) displayCartItems();
 
-card.addEventListener("click", () => {
-  panier_container.classList.add("show");
-});
+if (card) {
+  card.addEventListener("click", () => {
+    // FORCE REFRESH: Get latest data when opening cart
+    cartItems = JSON.parse(localStorage.getItem("data_card")) || [];
+    displayCartItems();
+    panier_container.classList.add("show");
+  });
+}
 
-close_btn.addEventListener("click", () => {
-  panier_container.classList.remove("show");
-});
+if (close_btn) {
+  close_btn.addEventListener("click", () => {
+    panier_container.classList.remove("show");
+  });
+}
 
+// "Add" button logic (For the index/home page cards)
 const add_btn = document.getElementById("add");
+if (add_btn) {
+  add_btn.addEventListener("click", (e) => {
+    let parent = e.target.parentElement;
 
-add_btn.addEventListener("click", (e) => {
-  let children = e.target.parentElement.children;
-  let [image, title, description, price] = children;
+    // Safer selection method
+    let imageSrc = parent.querySelector("img").src;
+    let titleText = parent.querySelector("h3").textContent;
+    let descText = parent.querySelector("p")
+      ? parent.querySelector("p").textContent
+      : "";
+    let priceText = parent.querySelector(".price")
+      ? parent.querySelector(".price").textContent
+      : "€0.00";
 
-  let newItem = {
-    id: Date.now(),
-    image_card: image.src,
-    title_card: title.textContent,
-    description_card: description.textContent,
-    price_card: price.textContent,
-    quantity: 1,
-  };
+    let newItem = {
+      id: Date.now(),
+      image_card: imageSrc,
+      title_card: titleText,
+      description_card: descText,
+      price_card: priceText,
+      quantity: 1,
+    };
 
-  const existingItemIndex = cartItems.findIndex(
-    (item) =>
-      item.title_card === newItem.title_card &&
-      item.price_card === newItem.price_card
-  );
+    const existingItemIndex = cartItems.findIndex(
+      (item) =>
+        item.title_card === newItem.title_card &&
+        item.price_card === newItem.price_card
+    );
 
-  if (existingItemIndex !== -1) {
-    cartItems[existingItemIndex].quantity += 1;
-  } else {
-    cartItems.push(newItem);
-  }
+    if (existingItemIndex !== -1) {
+      cartItems[existingItemIndex].quantity += 1;
+    } else {
+      cartItems.push(newItem);
+    }
 
-  // Save to localStorage
-  localStorage.setItem("data_card", JSON.stringify(cartItems));
-  displayCartItems();
-});
+    localStorage.setItem("data_card", JSON.stringify(cartItems));
+    displayCartItems();
+  });
+}
 
 // Display cart items
 function displayCartItems() {
+  if (!card_container) return;
   card_container.innerHTML = "";
 
   if (cartItems.length === 0) {
-    card_container.innerHTML = "<p>Your cart is empty</p>";
+    card_container.innerHTML =
+      '<p class="empty-msg" style="text-align:center; padding:20px;">Your cart is empty</p>';
     updateTotals();
     return;
   }
@@ -104,20 +125,16 @@ function displayCartItems() {
 function updateTotals() {
   let subtotal = 0;
 
-  // Calculate the subtotal based on items
   cartItems.forEach((item) => {
-    const priceValue = parseFloat(
-      item.price_card.replace("€", "").replace(",", ".")
-    );
+    // Remove € and , to calc
+    const priceValue =
+      parseFloat(item.price_card.replace("€", "").replace(",", ".")) || 0;
     subtotal += priceValue * item.quantity;
   });
 
-  // --- CHANGE START: Removed Tax Logic ---
-  // The total is now simply equal to the subtotal
+  // TAXES REMOVED: Total = Subtotal
   const total = subtotal;
-  // --- CHANGE END ---
 
-  // Update DOM elements
   const sousTotalElement = document.getElementById("sous_total");
   const totalTtcElement = document.getElementById("total_ttc");
 
@@ -131,34 +148,34 @@ function updateTotals() {
 }
 
 // Events
-card_container.addEventListener("click", (e) => {
-  const index = parseInt(e.target.getAttribute("data-index"));
+if (card_container) {
+  card_container.addEventListener("click", (e) => {
+    // Helper to find index even if clicking icon inside button
+    const targetBtn =
+      e.target.closest("button") || e.target.closest(".delete_order");
+    if (!targetBtn) return;
 
-  if (e.target.classList.contains("decrement_counter")) {
-    if (cartItems[index].quantity > 1) {
-      cartItems[index].quantity -= 1;
-    } else {
-      // Remove item if quantity zero
+    const index = parseInt(targetBtn.getAttribute("data-index"));
+
+    if (targetBtn.classList.contains("decrement_counter")) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+      } else {
+        cartItems.splice(index, 1);
+      }
+      localStorage.setItem("data_card", JSON.stringify(cartItems));
+      displayCartItems();
+    } else if (targetBtn.classList.contains("increment_counter")) {
+      cartItems[index].quantity += 1;
+      localStorage.setItem("data_card", JSON.stringify(cartItems));
+      displayCartItems();
+    } else if (targetBtn.classList.contains("delete_order")) {
       cartItems.splice(index, 1);
+      localStorage.setItem("data_card", JSON.stringify(cartItems));
+      displayCartItems();
     }
-    localStorage.setItem("data_card", JSON.stringify(cartItems));
-    displayCartItems();
-  } else if (e.target.classList.contains("increment_counter")) {
-    cartItems[index].quantity += 1;
-    localStorage.setItem("data_card", JSON.stringify(cartItems));
-    displayCartItems();
-  } else if (
-    e.target.classList.contains("delete_order") ||
-    e.target.closest(".delete_order")
-  ) {
-    const deleteIndex = parseInt(
-      e.target.closest(".delete_order").getAttribute("data-index")
-    );
-    cartItems.splice(deleteIndex, 1);
-    localStorage.setItem("data_card", JSON.stringify(cartItems));
-    displayCartItems();
-  }
-});
+  });
+}
 
 // Command button function
 const command_btn = document.getElementById("command_btn");
