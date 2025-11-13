@@ -1,15 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Details - FoodOrder+</title>
-    <link href="../css/output.css" rel="stylesheet" />
-    <!-- Font Awesome -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FoodOrder+ Product – Strict Mock</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="../css/components/header/styles.css" />
+    <link rel="stylesheet" href="../css/components/footer/styles.css" />
+
+    <link rel="stylesheet" href="../css/pageDetails/styles.css" />
+
+    <style></style>
   </head>
-  <body></body>
+
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">FOODORDER <span class="plus">+</span></div>
+
+        <i class="fa-solid fa-bars menu-icon" id="menu-toggle"></i>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="#">Product</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+
+        <div class="cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+      </nav>
+    </header>
+
+    <main class="wrap">
+      <section class="gallery">
+        <img
+          class="main-img"
+          src="./img.png"
+          alt="Mushroom risotto in a bowl"
+        />
+
+        <div class="thumb-strip" aria-label="More photos">
+          <img
+            class="thumb"
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=400&auto=format&fit=crop"
+            alt="Coffee 1"
+          />
+          <img
+            class="thumb"
+            src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=400&auto=format&fit=crop"
+            alt="Coffee 2"
+          />
+          <img
+            class="thumb"
+            src="https://images.unsplash.com/photo-1511920170033-f8396924c348?q=80&w=400&auto=format&fit=crop"
+            alt="Coffee 3"
+          />
+          <img
+            class="thumb"
+            src="https://images.unsplash.com/photo-1523901839036-a3030662f220?q=80&w=400&auto=format&fit=crop"
+            alt="Coffee 4"
+          />
+          <img
+            class="thumb"
+            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=400&auto=format&fit=crop"
+            alt="Coffee 5"
+          />
+        </div>
+      </section>
+
+      <section class="product-details">
+        <h1 class="title">Product Name</h1>
+
+        <div class="badge">category</div>
+
+        <div class="price">$20</div>
+
+        <p class="desc">
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book.
+        </p>
+
+        <div class="sizes" role="group" aria-label="Choose size">
+          <button class="size" aria-label="Size S">S</button>
+          <button class="size" aria-label="Size M">M</button>
+          <button class="size" aria-label="Size L">L</button>
+          <button class="size" aria-label="Size XL">XL</button>
+        </div>
+
+        <div class="qty-cta-row">
+          <div class="qty" aria-label="Quantity selector">
+            <button id="minus" aria-label="Decrease quantity">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <input
+              id="qtyInput"
+              type="text"
+              value="1"
+              inputmode="numeric"
+              aria-live="polite"
+            />
+            <button id="plus" aria-label="Increase quantity">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+
+          <button class="cta">Add to cart</button>
+        </div>
+      </section>
+    </main>
+
+    <section class="grid-section">
+      <h1>You could choose this also:</h1>
+      <div class="grid-container">
+        <div class="grid-item item-1">
+          <img
+            src="https://placehold.co/800x800/EAD9A8/222?text=Burger"
+            alt="Burger"
+            onerror="this.src='https://placehold.co/800x800/EAD9A8/222?text=Image+1+Failed'"
+          />
+        </div>
+
+        <div class="grid-item item-4">
+          <img
+            src="https://placehold.co/300x300/F5F5F5/222?text=Espresso"
+            alt="Espresso"
+            onerror="this.src='https://placehold.co/300x300/F5F5F5/222?text=Image+4+Failed'"
+          />
+        </div>
+
+        <div class="grid-item item-5">
+          <img
+            src="https://placehold.co/300x300/BC8A6A/FFF?text=Tiramisu"
+            alt="Tiramisu"
+            onerror="this.src='https://placehold.co/300x300/BC8A6A/FFF?text=Image+5+Failed'"
+          />
+        </div>
+
+        <div class="grid-item item-7">
+          <img
+            src="https://placehold.co/500x800/F8C8D8/222?text=Smoothie"
+            alt="Smoothie"
+            onerror="this.src='https://placehold.co/500x800/F8C8D8/222?text=Image+7+Failed'"
+          />
+        </div>
+
+        <div class="grid-item item-2">
+          <img
+            src="https://placehold.co/400x400/8C5A4A/FFF?text=Steak"
+            alt="Steak"
+            onerror="this.src='https://placehold.co/400x400/8C5A4A/FFF?text=Image+2+Failed'"
+          />
+        </div>
+
+        <div class="grid-item item-3">
+          <img
+            src="https://placehold.co/400x400/F0A868/222?text=Pizza"
+            alt="Small pizza"
+            onerror="this.src='https://placehold.co/400x400/F0A868/222?text=Image+3+Failed'"
+          />
+        </div>
+
+        <div class="grid-item item-6">
+          <img
+            src="https://placehold.co/800x500/F0A868/222?text=Pizza"
+            alt="Medium pizza"
+            onerror="this.src='https://placehold.co/800x500/F0A868/222?text=Image+6+Failed'"
+          />
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-wrap">
+        <div class="brand">FOODORDER<span class="plus">+</span></div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#">Home</a>
+          <a href="#">Product</a>
+          <a href="#">About us</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="../js/components/header.js"></script>
+    <script src="../js/pageDetails.js"></script>
+  </body>
 </html>
