@@ -542,3 +542,49 @@ body {
     grid-row: 5 / 6;
   }
 }
+
+/* 1. The Animation Keyframes */
+@keyframes shimmer {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+/* 2. The Skeleton Class */
+.skeleton {
+  /* The base color */
+  background-color: #eee;
+
+  /* The "Shine" Gradient */
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+
+  /* Make the background bigger so we can move it */
+  background-size: 200% 100%;
+
+  /* Run the animation */
+  animation: 1.5s shimmer linear infinite;
+
+  /* Important: Hide the broken image icon while loading */
+  color: transparent;
+}
+
+/* 3. Smooth Fade In */
+img {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* CRITICAL: Images need a default height for the skeleton to be visible! */
+.main-img {
+  min-height: 400px; /* Adjust based on your design */
+  background-color: #eee; /* Fallback */
+}
+
+.grid-item img {
+  min-height: 200px; /* Adjust based on your design */
+  background-color: #eee;
+}
+
+.thumb {
+  min-height: 80px;
+}
