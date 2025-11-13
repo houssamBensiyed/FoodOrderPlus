@@ -27,10 +27,53 @@
           <li><a href="#">About</a></li>
         </ul>
         <div class="cart">
-          <i class="fa-solid fa-cart-shopping"></i>
+          <i class="fa-solid fa-cart-shopping" i></i>
         </div>
       </nav>
+
+
+      <!-- panier -->
+          <div class="panier_container">
+        <div class="panier_card">
+          <div class="panier_header">
+            <h1 class="title">Votre Panier</h1>
+            <div class="close_btn">
+              <span id="close"><em class="fa fa-close"></em></span>
+            </div>
+          </div>
+          <div class="card_container"></div>
+        </div>
+        <div class="panier_command">
+          <div class="total">
+            <div class="left_content_card">
+              <p>Sous-total:</p>
+              <p>Taxes:</p>
+              <p>Total TTC:</p>
+            </div>
+            <div class="right_content_card">
+              <p id="sous_total">€124.00</p>
+              <h4 id="total_ttc">€136.40</h4>
+            </div>
+          </div>
+          <div class="btn_command">
+            <button id="command_btn">commander</button>
+          </div>
+        </div>
+      </div>
     </header>
+
+
+
+
+    <div class="data_card">
+      <div class="card">
+        <img src="../assets/img/creme-brulee.png" alt="">
+        <h3>title</h3>
+        <p>Lorem ipsum dolor sit.</p>
+        <strong class="price">€200.00</strong>
+        <button id="add">add to panier</button>
+      </div>
+    </div>
     <script src="../js/components/header.js"></script>
   </body>
 </html>

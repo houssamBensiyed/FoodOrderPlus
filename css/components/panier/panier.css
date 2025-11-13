@@ -1,111 +1,32 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-
-body {
-  margin: 0;
-  /* background-color: white; */
-  color: white;
-  font-family: inter, sans-serif;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  height: 70px;
-  background-color: black;
-  position: relative;
-}
-
-.logo {
-  font-size: 1.5em;
-  font-weight: bold;
-  flex: 1;
-  margin-left: 20px;
-}
-
-.plus {
-  color: red;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex: 2;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.nav-links a {
-  text-decoration: none;
-  font-weight: 300;
-  color: white;
-  transition: color 0.3s;
+body {
+  width: 100vw;
+  height: 100vh;
 }
 
-.nav-links a:hover {
-  color: gray;
-}
-
-.cart {
-  flex: 1;
+.panier_vide {
+  background-color: #000;
+  width: 250px;
+  height: 50px;
+  padding: 10px;
+  color: #fff;
   display: flex;
-  justify-content: flex-end;
-  margin-right: 30px;
-}
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 5px;
 
-.cart i {
-  width: 25px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.cart i:hover {
-  color: orangered;
-}
-
-.menu-icon {
-  display: none !important;
-  font-size: 1.8rem;
-  cursor: pointer;
-  position: absolute;
-  right: 20px;
-  transition: transform 0.3s ease-in-out;
-}
-
-.menu-icon.fa-xmark {
-  transform: rotate(180deg);
-}
-
-@media screen and (max-width: 768px) {
-  .nav-links {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background-color: black;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding: 40px 0;
-    display: none;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .menu-icon {
-    display: block !important; /* Show on mobile */
-  }
-
-  .logo {
-    text-align: center;
-    margin-left: 0;
+  & .fa-basket-shopping {
+    font-size: 20px;
+    color: #ff9d00;
   }
 }
+
 /* panier card container */
 .panier {
   width: 1000px;
@@ -119,12 +40,6 @@ body {
   background-color: #000;
   color: #fff;
   padding: 10px;
-  position: absolute;
-  right: 0;
-  top: -600px;
-  z-index:-1;
-  transition: all 1s linear;
-  opacity: 0;
 }
 
 .panier_header {
@@ -249,36 +164,4 @@ body {
 .left_content_card :last-child,
 #sous_total {
   color: #ff9d00;
-}
-
-
-
-.panier_container.show{
-  top: 100px;
-  opacity: 1;
-  z-index: 222222;
-}
-
-
-/* card */
-.data_card{
-width: 1200px;
-background-color: red;
-margin: auto;
-padding: 20px;
-display: grid;
-grid-template-columns: repeat(auto-fill , minmax(200px , 1fr));
-}
-
-
-.card{
-  width: 200px;
-  padding: 10px;
-  background-color: #ff9d00;
-}
-
-
-.card img{
-  width: 30px;
-  height: 30px;
 }
