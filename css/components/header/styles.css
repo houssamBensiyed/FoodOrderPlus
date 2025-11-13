@@ -81,6 +81,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .nav-links {
+    z-index: 100;
     position: absolute;
     top: 70px;
     left: 0;

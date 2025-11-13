@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="../css/components/header/styles.css" rel="stylesheet" />
+    <link href="../css/components/footer/styles.css" rel="stylesheet" />
+    <link href="../css/output.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <title>Home</title>
+  </head>
+
+  <body class="bg-black text-white">
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">
+          FOODORDER
+          <span class="plus">+</span>
+        </div>
+
+        <i class="fa-solid fa-bars menu-icon" id="menu-toggle"></i>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="#">Product</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <div class="cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+      </nav>
+    </header>
+
+    <section class="w-full">
+      <img
+        class="w-full max-h-screen object-cover"
+        src="./assets/home/car-1.jpg"
+        alt="Food banner"
+      />
+    </section>
+
+    <!-- About Us -->
+    <section>
+      <div class="mx-auto max-w-7xl px-6 py-12">
+        <h2 class="text-center md:text-left text-4xl lg:text-5xl font-bold">
+          Our<span class="text-[#FF9D00]"> Story</span>
+        </h2>
+
+        <div class="mt-8 grid gap-8 md:gap-12 md:grid-cols-2 md:items-center">
+          <div class="md:pr-8 min-w-0">
+            <p class="text-justify leading-relaxed lg:text-lg lg:leading-8">
+              At FoodOrder+, we’re redefining the way people experience food
+              online. Our mission is to make ordering your favorite meals
+              simple, fast, and enjoyable. Through our interactive platform,
+              users can explore rich menus, customize their dishes, manage their
+              cart in real time, and instantly generate a digital order ticket.
+            </p>
+            <p
+              class="mt-4 text-justify leading-relaxed lg:text-lg lg:leading-8"
+            >
+              We blend technology and taste to deliver a smooth, modern culinary
+              experience — whether you’re dining at home, at work, or on the go.
+              With FoodOrder+, you’re just a few clicks away from your next
+              delicious moment. FoodOrder+ — where every order feels like a
+              personalized dining experience.hh
+            </p>
+          </div>
+
+          <div class="md:justify-self-end">
+            <img
+              src="./assets/home/adout-img.jpg"
+              alt="Food order"
+              class="w-full max-w-[560px] md:max-w-[600px] lg:max-w-[600px] aspect-[4/3] object-cover rounded-lg shadow-md"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section>
+      <div class="mx-auto max-w-7xl px-6 py-12">
+        <h2 class="text-center text-4xl md:text-5xl font-bold mb-8">Menu</h2>
+
+        <div class="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <article class="bg-[#1b1f23] rounded-2xl shadow-lg overflow-hidden">
+            <div class="flex gap-4 p-4 lg:flex-col lg:p-0">
+              <img
+                src="./assets/home/item-1.png"
+                alt="Filet de bœuf Wellington"
+                class="h-28 w-36 flex-none rounded-xl object-cover lg:h-40 lg:w-full lg:rounded-none"
+              />
+
+              <div class="flex flex-col justify-between lg:p-4">
+                <div>
+                  <h3 class="font-bold tracking-wide">
+                    PÂTES AUX FRUITS DE MER
+                  </h3>
+                  <p class="mt-1 text-sm text-[#C9A54A]/80">
+                    Linguine, sélection de fruits mer.
+                  </p>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <button
+                    class="px-3 py-1.5 rounded-full border border-[#C9A54A] text-[#C9A54A] text-xs hover:bg-[#C9A54A]/10"
+                  >
+                    VOIR LES DÉTAILS
+                  </button>
+                  <span class="text-[#C9A54A] font-semibold">180 MAD</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-[#1b1f23] rounded-2xl shadow-lg overflow-hidden">
+            <div class="flex gap-4 p-4 lg:flex-col lg:p-0">
+              <img
+                src="./assets/home/item-2.png"
+                alt="Saumon à l'aneth"
+                class="h-28 w-36 flex-none rounded-xl object-cover lg:h-40 lg:w-full lg:rounded-none"
+              />
+
+              <div class="flex flex-col justify-between lg:p-4">
+                <div>
+                  <h3 class="font-bold tracking-wide">SALADE NICOISE</h3>
+                  <p class="mt-1 text-sm text-[#C9A54A]/80">
+                    Salads campagnés, thon frais.
+                  </p>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <button
+                    class="px-3 py-1.5 rounded-full border border-[#C9A54A] text-[#C9A54A] text-xs hover:bg-[#C9A54A]/10"
+                  >
+                    VOIR LES DÉTAILS
+                  </button>
+                  <span class="text-[#C9A54A] font-semibold">40 MAD</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="hidden md:block bg-[#1b1f23] rounded-2xl shadow-lg overflow-hidden"
+          >
+            <div class="flex gap-4 p-4 lg:flex-col lg:p-0">
+              <img
+                src="./assets/home/item-4.png"
+                alt="Salade niçoise"
+                class="h-28 w-36 flex-none rounded-xl object-cover lg:h-40 lg:w-full lg:rounded-none"
+              />
+
+              <div class="flex flex-col justify-between lg:p-4">
+                <div>
+                  <h3 class="font-bold tracking-wide">
+                    FILET DE BŒUF WELLINGTON
+                  </h3>
+                  <p class="mt-1 text-sm text-[#C9A54A]/80">
+                    Bœuf tendre en croûte, sauce aux champignons.
+                  </p>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <button
+                    class="px-3 py-1.5 rounded-full border border-[#C9A54A] text-[#C9A54A] text-xs hover:bg-[#C9A54A]/10"
+                  >
+                    VOIR LES DÉTAILS
+                  </button>
+                  <span class="text-[#C9A54A] font-semibold">180 MAD</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="bg-[#1b1f23] rounded-2xl shadow-lg overflow-hidden">
+            <div class="flex gap-4 p-4 lg:flex-col lg:p-0">
+              <img
+                src="./assets/home/item-3.png"
+                alt="Pâtes aux fruits de mer"
+                class="h-28 w-36 flex-none rounded-xl object-cover lg:h-40 lg:w-full lg:rounded-none"
+              />
+
+              <div class="flex flex-col justify-between lg:p-4">
+                <div>
+                  <h3 class="font-bold tracking-wide">SALMON À L'ANETH</h3>
+                  <p class="mt-1 text-sm text-[#C9A54A]/80">
+                    Pavé de saumon, crème aneth-citron.
+                  </p>
+                </div>
+
+                <div class="mt-4 flex items-center justify-between">
+                  <button
+                    class="px-3 py-1.5 rounded-full border border-[#C9A54A] text-[#C9A54A] text-xs hover:bg-[#C9A54A]/10"
+                  >
+                    VOIR LES DÉTAILS
+                  </button>
+                  <span class="text-[#C9A54A] font-semibold">300 MAD</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-10 flex justify-center">
+          <a
+            href="#"
+            class="inline-block rounded-full bg-[#FF9D00] px-8 py-3 text-lg font-semibold text-white hover:opacity-90"
+          >
+            Order Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section>
+      <div class="mx-auto max-w-7xl px-6 py-12">
+        <h2 class="text-center md:text-left text-4xl lg:text-5xl font-bold">
+          Contact<span class="text-[#FF9D00]"> Us</span>
+        </h2>
+
+        <div class="mt-8">
+          <div class="md:pr-8 min-w-0">
+            <p class="text-justify leading-relaxed lg:text-lg lg:leading-8">
+              We’re always happy to connect with you! At FoodOrder+, we value
+              every question, suggestion, and idea from our users. Whether
+              you’re looking for more information about our services, need help
+              with your order, or simply want to share your experience, our team
+              is here to listen and respond.
+            </p>
+            <p
+              class="mt-4 text-justify leading-relaxed lg:text-lg lg:leading-8"
+            >
+              Click the button below to get in touch — we’ll make sure to
+              respond as quickly as possible.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 flex justify-center">
+          <a
+            href="#"
+            class="inline-block rounded-full bg-[#FF9D00] px-8 py-3 text-lg font-semibold text-white hover:opacity-90"
+          >
+            Order Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comments -->
+    <section>
+      <div class="mx-auto mt-10 max-w-7xl px-6 mb-20">
+        <h2
+          class="text-3xl md:text-5xl font-extrabold text-center md:text-left"
+        >
+          Guest<span class="text-[#FF9D00]"> Experiences</span>
+        </h2>
+
+        <div class="mt-8 grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Comment-1 -->
+          <div
+            class="flex flex-col justify-around lg:mt-28 bg-[#444444] rounded-[24px] p-6 h-80 max-w-[450px] mx-auto"
+          >
+            <div class="w-10 h-10">
+              <img
+                src="./assets/home/comment.png"
+                alt="comment icon"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <p class="text-sm leading-relaxed">
+              "Absolutely delicious! Every dish was bursting with flavor and
+              beautifully presented. The service was quick, friendly, and made
+              the whole dining experience feel special. It’s definitely become
+              one of my favorite places to eat!"
+            </p>
+            <div class="flex items-center gap-20">
+              <img
+                src="./assets/home/profile.png"
+                alt="profile"
+                class="w-[60px] h-[60px] rounded-full object-cover"
+              />
+              <h3 class="font-bold text-xl">James Walker</h3>
+            </div>
+          </div>
+          <!-- Comment-2 -->
+          <div
+            class="flex flex-col justify-around bg-[#444444] rounded-[24px] p-6 h-80 max-w-[450px] mx-auto"
+          >
+            <div class="w-10 h-10">
+              <img
+                src="./assets/home/comment.png"
+                alt="comment icon"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <p class="text-sm leading-relaxed">
+              "Absolutely delicious! Every dish was bursting with flavor and
+              beautifully presented. The service was quick, friendly, and made
+              the whole dining experience feel special. It’s definitely become
+              one of my favorite places to eat!"
+            </p>
+            <div class="flex items-center gap-20">
+              <img
+                src="./assets/home/profile.png"
+                alt="profile"
+                class="w-[60px] h-[60px] rounded-full object-cover"
+              />
+              <h3 class="font-bold text-xl">James Walker</h3>
+            </div>
+          </div>
+          <!-- Comment-3 -->
+          <div
+            class="flex flex-col justify-around lg:mt-28 bg-[#444444] rounded-[24px] p-6 h-80 max-w-[450px] mx-auto"
+          >
+            <div class="w-10 h-10">
+              <img
+                src="./assets/home/comment.png"
+                alt="comment icon"
+                class="w-full h-full object-contain"
+              />
+            </div>
+            <p class="text-sm leading-relaxed">
+              "Absolutely delicious! Every dish was bursting with flavor and
+              beautifully presented. The service was quick, friendly, and made
+              the whole dining experience feel special. It’s definitely become
+              one of my favorite places to eat!"
+            </p>
+            <div class="flex items-center gap-20">
+              <img
+                src="./assets/home/profile.png"
+                alt="profile"
+                class="w-[60px] h-[60px] rounded-full object-cover"
+              />
+              <h3 class="font-bold text-xl">James Walker</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-wrap">
+        <div class="brand">FOODORDER<span class="plus">+</span></div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#">Home</a>
+          <a href="#">Product</a>
+          <a href="#">About us</a>
+        </nav>
+      </div>
+    </footer>
+    <script src="../js/components/header.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>
