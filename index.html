@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&family=Bebas+Neue&family=Oswald:wght@700&display=swap"
       rel="stylesheet"
     />
     <link href="../css/components/header/styles.css" rel="stylesheet" />
@@ -15,6 +15,454 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
+
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <!-- FIXED ULTRA SHARP SLIDER STYLES -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Fixed Header Z-Index */
+      .header {
+        position: relative;
+        z-index: 9999 !important;
+      }
+
+      /* ULTRA SLIDER CONTAINER */
+      .ultra-slider {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        max-height: 900px;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        position: relative;
+        overflow: hidden;
+        background: #000;
+      }
+
+      /* IMAGE STYLES - SHARP & OPTIMIZED */
+      .slide-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.1);
+        filter: brightness(0.5) contrast(1.1);
+        transition: transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .swiper-slide-active .slide-bg {
+        transform: scale(1);
+      }
+
+      /* GRADIENT OVERLAY */
+      .gradient-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(255, 157, 0, 0.1) 50%,
+          rgba(0, 0, 0, 0.9) 100%
+        );
+        pointer-events: none;
+      }
+
+      /* ANIMATED GRADIENT */
+      .gradient-animated {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle at center,
+          transparent 0%,
+          rgba(255, 157, 0, 0.1) 40%,
+          transparent 70%
+        );
+        animation: rotateGradient 15s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes rotateGradient {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* CONTENT CONTAINER */
+      .slide-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 1200px;
+        z-index: 10;
+        text-align: center;
+        padding: 20px;
+      }
+
+      /* SLIDE NUMBER */
+      .slide-number {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(120px, 15vw, 180px);
+        line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(255, 157, 0, 0.2);
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        user-select: none;
+      }
+
+      /* SLIDE LABEL */
+      .slide-label {
+        display: inline-block;
+        padding: 8px 24px;
+        background: #ff9d00;
+        color: #000;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        position: relative;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+        animation-delay: 0.2s;
+      }
+
+      /* MAIN TITLE */
+      .slide-title {
+        font-family: "Oswald", sans-serif;
+        font-size: clamp(48px, 8vw, 96px);
+        font-weight: 700;
+        line-height: 0.95;
+        color: #fff;
+        text-transform: uppercase;
+        margin: 0 0 30px 0;
+        letter-spacing: -0.02em;
+        position: relative;
+        z-index: 1;
+      }
+
+      .slide-title-line {
+        display: block;
+        overflow: hidden;
+        padding: 5px 0;
+      }
+
+      .slide-title-line span {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(100%);
+        animation: slideUpTitle 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      }
+
+      .slide-title-line:nth-child(1) span {
+        animation-delay: 0.3s;
+      }
+
+      .slide-title-line:nth-child(2) span {
+        animation-delay: 0.4s;
+      }
+
+      .slide-title .accent {
+        color: #ff9d00;
+        text-shadow: 0 0 30px rgba(255, 157, 0, 0.5);
+      }
+
+      /* DESCRIPTION */
+      .slide-description {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(14px, 2vw, 18px);
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0 auto 40px;
+        max-width: 600px;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+        animation-delay: 0.5s;
+      }
+
+      /* CTA BUTTONS */
+      .slide-cta-group {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        display: inline-block;
+        padding: 16px 48px;
+        background: linear-gradient(135deg, #ff9d00, #ff6b00);
+        color: #000;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+        animation-delay: 0.6s;
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .btn-primary:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(255, 157, 0, 0.4);
+      }
+
+      .btn-secondary {
+        display: inline-block;
+        padding: 16px 48px;
+        background: transparent;
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease forwards;
+        animation-delay: 0.7s;
+      }
+
+      .btn-secondary:hover {
+        border-color: #ff9d00;
+        color: #ff9d00;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(255, 157, 0, 0.2);
+      }
+
+      /* ANIMATIONS */
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideUpTitle {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* CUSTOM NAVIGATION */
+      .custom-nav {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+        z-index: 100;
+      }
+
+      .nav-btn {
+        width: 60px;
+        height: 60px;
+        background: rgba(0, 0, 0, 0.5);
+        border: 2px solid #ff9d00;
+        color: #ff9d00;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-btn:hover {
+        background: #ff9d00;
+        color: #000;
+        transform: scale(1.1);
+      }
+
+      /* SWIPER PAGINATION */
+      .swiper-pagination {
+        bottom: 120px !important;
+      }
+
+      .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.3);
+        opacity: 1;
+        margin: 0 6px !important;
+        transition: all 0.3s ease;
+      }
+
+      .swiper-pagination-bullet-active {
+        width: 40px;
+        border-radius: 4px;
+        background: #ff9d00;
+      }
+
+      /* SLIDE COUNTER */
+      .slide-counter {
+        position: absolute;
+        top: 50%;
+        right: 40px;
+        transform: translateY(-50%);
+        z-index: 100;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.5);
+        writing-mode: vertical-rl;
+        letter-spacing: 0.1em;
+      }
+
+      .counter-current {
+        color: #ff9d00;
+        font-size: 32px;
+      }
+
+      /* SOCIAL LINKS */
+      .social-links {
+        position: absolute;
+        top: 50%;
+        left: 40px;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        z-index: 100;
+      }
+
+      .social-link {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.5);
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 16px;
+      }
+
+      .social-link:hover {
+        color: #ff9d00;
+        border-color: #ff9d00;
+        transform: translateX(5px);
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 768px) {
+        .ultra-slider {
+          height: 70vh;
+          max-height: 600px;
+        }
+
+        .slide-number {
+          font-size: 80px;
+          top: -40px;
+        }
+
+        .slide-title {
+          font-size: clamp(36px, 10vw, 60px);
+        }
+
+        .slide-description {
+          font-size: 14px;
+          margin: 0 auto 30px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          padding: 12px 36px;
+          font-size: 12px;
+        }
+
+        .social-links,
+        .slide-counter {
+          display: none;
+        }
+
+        .custom-nav {
+          bottom: 20px;
+        }
+
+        .nav-btn {
+          width: 50px;
+          height: 50px;
+          font-size: 18px;
+        }
+
+        .swiper-pagination {
+          bottom: 90px !important;
+        }
+      }
+    </style>
+
     <title>Home</title>
   </head>
 
@@ -29,7 +477,7 @@
         <i class="fa-solid fa-bars menu-icon" id="menu-toggle"></i>
 
         <ul class="nav-links" id="nav-links">
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="#">Product</a></li>
           <li><a href="#">About</a></li>
         </ul>
@@ -37,18 +485,229 @@
           <i class="fa-solid fa-cart-shopping"></i>
         </div>
       </nav>
+
+      <div class="panier_container">
+        <div class="panier_card">
+          <div class="panier_header">
+            <h1 class="title">Votre Panier</h1>
+            <div class="close_btn">
+              <span id="close"><em class="fa fa-close"></em></span>
+            </div>
+          </div>
+          <div class="card_container"></div>
+        </div>
+        <div class="panier_command">
+          <div class="total">
+            <div class="left_content_card">
+              <p>Sous-total:</p>
+              <p>Total TTC:</p>
+            </div>
+            <div class="right_content_card">
+              <p id="sous_total">€0.00</p>
+              <h4 id="total_ttc">€0.00</h4>
+            </div>
+          </div>
+          <div class="btn_command">
+            <button id="command_btn">commander</button>
+          </div>
+        </div>
+      </div>
     </header>
 
-    <section class="w-full">
-      <img
-        class="w-full max-h-screen object-cover"
-        src="./assets/home/car-1.jpg"
-        alt="Food banner"
-      />
+    <!-- FIXED ULTRA SHARP SLIDER -->
+    <section class="ultra-slider">
+      <!-- Social Links -->
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+      </div>
+
+      <!-- Slide Counter -->
+      <div class="slide-counter">
+        <span class="counter-current">01</span> / 05
+      </div>
+
+      <div class="swiper ultraSwiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <img
+              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=100"
+              alt="Premium Dining"
+              class="slide-bg"
+            />
+            <div class="gradient-overlay"></div>
+            <div class="gradient-animated"></div>
+
+            <div class="slide-content">
+              <div class="slide-number">01</div>
+              <span class="slide-label">Premium Collection</span>
+              <h2 class="slide-title">
+                <div class="slide-title-line">
+                  <span>TASTE THE</span>
+                </div>
+                <div class="slide-title-line">
+                  <span class="accent">REVOLUTION</span>
+                </div>
+              </h2>
+              <p class="slide-description">
+                Experience culinary excellence with our signature dishes,
+                crafted by world-class chefs using only the finest ingredients.
+              </p>
+              <div class="slide-cta-group">
+                <button class="btn-primary">ORDER NOW</button>
+                <a href="#menu" class="btn-secondary">VIEW MENU</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <img
+              src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1920&q=100"
+              alt="BBQ Grill"
+              class="slide-bg"
+            />
+            <div class="gradient-overlay"></div>
+            <div class="gradient-animated"></div>
+
+            <div class="slide-content">
+              <div class="slide-number">02</div>
+              <span class="slide-label">BBQ Masters</span>
+              <h2 class="slide-title">
+                <div class="slide-title-line">
+                  <span>GRILLED TO</span>
+                </div>
+                <div class="slide-title-line">
+                  <span class="accent">PERFECTION</span>
+                </div>
+              </h2>
+              <p class="slide-description">
+                Savor the smoky flavors of our expertly grilled meats, marinated
+                in secret spices and cooked over open flames.
+              </p>
+              <div class="slide-cta-group">
+                <button class="btn-primary">ORDER NOW</button>
+                <a href="#menu" class="btn-secondary">BBQ MENU</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <img
+              src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1920&q=100"
+              alt="Italian Food"
+              class="slide-bg"
+            />
+            <div class="gradient-overlay"></div>
+            <div class="gradient-animated"></div>
+
+            <div class="slide-content">
+              <div class="slide-number">03</div>
+              <span class="slide-label">Italian Heritage</span>
+              <h2 class="slide-title">
+                <div class="slide-title-line">
+                  <span>AUTHENTIC</span>
+                </div>
+                <div class="slide-title-line">
+                  <span class="accent">ITALIANO</span>
+                </div>
+              </h2>
+              <p class="slide-description">
+                From handmade pasta to wood-fired pizzas, discover the true
+                taste of Italy in every bite.
+              </p>
+              <div class="slide-cta-group">
+                <button class="btn-primary">ORDER NOW</button>
+                <a href="#menu" class="btn-secondary">PASTA & PIZZA</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <img
+              src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=1920&q=100"
+              alt="Fast Food"
+              class="slide-bg"
+            />
+            <div class="gradient-overlay"></div>
+            <div class="gradient-animated"></div>
+
+            <div class="slide-content">
+              <div class="slide-number">04</div>
+              <span class="slide-label">Fast Delivery</span>
+              <h2 class="slide-title">
+                <div class="slide-title-line">
+                  <span>LIGHTNING</span>
+                </div>
+                <div class="slide-title-line">
+                  <span class="accent">FAST</span>
+                </div>
+              </h2>
+              <p class="slide-description">
+                Hot, fresh meals delivered to your door in 30 minutes or less.
+                Speed without compromising quality.
+              </p>
+              <div class="slide-cta-group">
+                <button class="btn-primary">ORDER NOW</button>
+                <a href="#track" class="btn-secondary">TRACK ORDER</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <img
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=100"
+              alt="Fine Dining"
+              class="slide-bg"
+            />
+            <div class="gradient-overlay"></div>
+            <div class="gradient-animated"></div>
+
+            <div class="slide-content">
+              <div class="slide-number">05</div>
+              <span class="slide-label">Fine Dining</span>
+              <h2 class="slide-title">
+                <div class="slide-title-line">
+                  <span>MICHELIN</span>
+                </div>
+                <div class="slide-title-line">
+                  <span class="accent">STARRED</span>
+                </div>
+              </h2>
+              <p class="slide-description">
+                Indulge in our award-winning cuisine, where every dish is a
+                masterpiece of flavor and presentation.
+              </p>
+              <div class="slide-cta-group">
+                <button class="btn-primary">RESERVE TABLE</button>
+                <a href="#wine" class="btn-secondary">WINE PAIRING</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swiper Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <!-- Custom Navigation -->
+      <div class="custom-nav">
+        <button class="nav-btn nav-prev">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="nav-btn nav-next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
     </section>
 
-    <!-- About Us -->
-    <section>
+    <!-- About Us Section -->
+    <section id="about">
       <div class="mx-auto max-w-7xl px-6 py-12">
         <h2 class="text-center md:text-left text-4xl lg:text-5xl font-bold">
           Our<span class="text-[#FF9D00]"> Story</span>
@@ -57,7 +716,7 @@
         <div class="mt-8 grid gap-8 md:gap-12 md:grid-cols-2 md:items-center">
           <div class="md:pr-8 min-w-0">
             <p class="text-justify leading-relaxed lg:text-lg lg:leading-8">
-              At FoodOrder+, we’re redefining the way people experience food
+              At FoodOrder+, we're redefining the way people experience food
               online. Our mission is to make ordering your favorite meals
               simple, fast, and enjoyable. Through our interactive platform,
               users can explore rich menus, customize their dishes, manage their
@@ -67,10 +726,10 @@
               class="mt-4 text-justify leading-relaxed lg:text-lg lg:leading-8"
             >
               We blend technology and taste to deliver a smooth, modern culinary
-              experience — whether you’re dining at home, at work, or on the go.
-              With FoodOrder+, you’re just a few clicks away from your next
+              experience — whether you're dining at home, at work, or on the go.
+              With FoodOrder+, you're just a few clicks away from your next
               delicious moment. FoodOrder+ — where every order feels like a
-              personalized dining experience.hh
+              personalized dining experience.
             </p>
           </div>
 
@@ -85,8 +744,8 @@
       </div>
     </section>
 
-    <!-- Menu -->
-    <section>
+    <!-- Menu Section -->
+    <section id="menu">
       <div class="mx-auto max-w-7xl px-6 py-12">
         <h2 class="text-center text-4xl md:text-5xl font-bold mb-8">Menu</h2>
 
@@ -221,7 +880,7 @@
       </div>
     </section>
 
-    <!-- Contact Us -->
+    <!-- Contact Us Section -->
     <section>
       <div class="mx-auto max-w-7xl px-6 py-12">
         <h2 class="text-center md:text-left text-4xl lg:text-5xl font-bold">
@@ -231,16 +890,16 @@
         <div class="mt-8">
           <div class="md:pr-8 min-w-0">
             <p class="text-justify leading-relaxed lg:text-lg lg:leading-8">
-              We’re always happy to connect with you! At FoodOrder+, we value
+              We're always happy to connect with you! At FoodOrder+, we value
               every question, suggestion, and idea from our users. Whether
-              you’re looking for more information about our services, need help
+              you're looking for more information about our services, need help
               with your order, or simply want to share your experience, our team
               is here to listen and respond.
             </p>
             <p
               class="mt-4 text-justify leading-relaxed lg:text-lg lg:leading-8"
             >
-              Click the button below to get in touch — we’ll make sure to
+              Click the button below to get in touch — we'll make sure to
               respond as quickly as possible.
             </p>
           </div>
@@ -251,13 +910,13 @@
             href="#"
             class="inline-block rounded-full bg-[#FF9D00] px-8 py-3 text-lg font-semibold text-white hover:opacity-90"
           >
-            Order Now
+            Contact Us
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Comments -->
+    <!-- Comments Section -->
     <section>
       <div class="mx-auto mt-10 max-w-7xl px-6 mb-20">
         <h2
@@ -281,7 +940,7 @@
             <p class="text-sm leading-relaxed">
               "Absolutely delicious! Every dish was bursting with flavor and
               beautifully presented. The service was quick, friendly, and made
-              the whole dining experience feel special. It’s definitely become
+              the whole dining experience feel special. It's definitely become
               one of my favorite places to eat!"
             </p>
             <div class="flex items-center gap-20">
@@ -307,7 +966,7 @@
             <p class="text-sm leading-relaxed">
               "Absolutely delicious! Every dish was bursting with flavor and
               beautifully presented. The service was quick, friendly, and made
-              the whole dining experience feel special. It’s definitely become
+              the whole dining experience feel special. It's definitely become
               one of my favorite places to eat!"
             </p>
             <div class="flex items-center gap-20">
@@ -333,7 +992,7 @@
             <p class="text-sm leading-relaxed">
               "Absolutely delicious! Every dish was bursting with flavor and
               beautifully presented. The service was quick, friendly, and made
-              the whole dining experience feel special. It’s definitely become
+              the whole dining experience feel special. It's definitely become
               one of my favorite places to eat!"
             </p>
             <div class="flex items-center gap-20">
@@ -360,7 +1019,94 @@
         </nav>
       </div>
     </footer>
+
+    <!-- Scripts -->
     <script src="../js/components/header.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Fixed Swiper Initialization -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize Swiper
+        const swiper = new Swiper(".ultraSwiper", {
+          // Core parameters
+          slidesPerView: 1,
+          spaceBetween: 0,
+          loop: true,
+          speed: 1000,
+
+          // Autoplay
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+
+          // Effect
+          effect: "fade",
+          fadeEffect: {
+            crossFade: true,
+          },
+
+          // Pagination
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+
+          // Events
+          on: {
+            slideChange: function () {
+              updateCounter(this.realIndex + 1);
+              resetAnimations();
+            },
+          },
+        });
+
+        // Custom Navigation
+        const prevBtn = document.querySelector(".nav-prev");
+        const nextBtn = document.querySelector(".nav-next");
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => swiper.slidePrev());
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => swiper.slideNext());
+        }
+
+        // Update Counter
+        function updateCounter(index) {
+          const counter = document.querySelector(".counter-current");
+          if (counter) {
+            counter.textContent = String(index).padStart(2, "0");
+          }
+        }
+
+        // Reset animations on slide change
+        function resetAnimations() {
+          const activeSlide = document.querySelector(".swiper-slide-active");
+          if (activeSlide) {
+            const elements = activeSlide.querySelectorAll(
+              ".slide-label, .slide-title-line span, .slide-description, .btn-primary, .btn-secondary"
+            );
+
+            elements.forEach((el) => {
+              // Remove animation class
+              el.style.animation = "none";
+
+              // Trigger reflow
+              el.offsetHeight;
+
+              // Re-add animation
+              el.style.animation = null;
+            });
+          }
+        }
+
+        // Initialize first slide
+        updateCounter(1);
+      });
+    </script>
   </body>
 </html>

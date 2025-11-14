@@ -14,7 +14,7 @@
   </head>
 
   <body class="bg-black text-white">
-    <header style="background-image: url(../assets/background-1.jpg)">
+    <header class="header">
       <nav class="navbar">
         <div class="logo">
           FOODORDER
@@ -24,20 +24,43 @@
         <i class="fa-solid fa-bars menu-icon" id="menu-toggle"></i>
 
         <ul class="nav-links" id="nav-links">
-          <li><a href="../index.html">Home</a></li>
+          <li><a href="#">Home</a></li>
           <li><a href="#">Product</a></li>
-          <li><a href="#" style="color: #ff9d00">About</a></li>
+          <li><a href="#">About</a></li>
         </ul>
         <div class="cart">
-          <i class="fa-solid fa-cart-shopping"></i>
+          <i class="fa-solid fa-cart-shopping" i></i>
         </div>
       </nav>
-      <img
-        src="../assets/background-2.png"
-        alt="restaurant"
-        class="w-full h-full object-cover"
-      />
+
+      <div class="panier_container">
+        <div class="panier_card">
+          <div class="panier_header">
+            <h1 class="title">Votre Panier</h1>
+            <div class="close_btn">
+              <span id="close"><em class="fa fa-close"></em></span>
+            </div>
+          </div>
+          <div class="card_container"></div>
+        </div>
+        <div class="panier_command">
+          <div class="total">
+            <div class="left_content_card">
+              <p>Sous-total:</p>
+              <p>Total TTC:</p>
+            </div>
+            <div class="right_content_card">
+              <p id="sous_total">€0.00</p>
+              <h4 id="total_ttc">€0.00</h4>
+            </div>
+          </div>
+          <div class="btn_command">
+            <button id="command_btn">commander</button>
+          </div>
+        </div>
+      </div>
     </header>
+
     <section class="p-20 text-center">
       <h1 class="text-4xl font-bold mb-10">Our Chefs</h1>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
