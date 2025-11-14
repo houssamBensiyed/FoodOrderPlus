@@ -11,36 +11,27 @@ if (menuIcon) {
   });
 }
 
-// --- Cart Functionality ---
 const panier_container = document.querySelector(".panier_container");
 const card = document.querySelector(".cart");
 const close_btn = document.querySelector(".close_btn");
 const card_container = document.querySelector(".card_container");
 const command_btn = document.getElementById("command_btn");
 
-// Initialize cart from localStorage
 let cartItems = JSON.parse(localStorage.getItem("data_card")) || [];
 
-// --- START: Modal-Only Logic ---
-// We only run this code if the cart modal AND its parts exist on the current page
 if (panier_container && card_container && close_btn && card && command_btn) {
-  // Display cart items on load (for the modal)
   displayCartItems();
 
-  // Show modal
   card.addEventListener("click", () => {
-    // FORCE REFRESH: Get latest data when opening cart
     cartItems = JSON.parse(localStorage.getItem("data_card")) || [];
     displayCartItems();
     panier_container.classList.add("show");
   });
 
-  // Hide modal
   close_btn.addEventListener("click", () => {
     panier_container.classList.remove("show");
   });
 
-  // Display cart items (in modal)
   function displayCartItems() {
     if (!card_container) return;
     card_container.innerHTML = "";
@@ -83,7 +74,6 @@ if (panier_container && card_container && close_btn && card && command_btn) {
     updateTotals();
   }
 
-  // Update quantity and totals (for modal)
   function updateTotals() {
     let subtotal = 0;
 
@@ -139,15 +129,7 @@ if (panier_container && card_container && close_btn && card && command_btn) {
       alert("Your cart is empty!");
       return;
     }
-    // **CHANGE: This button should now go to the payment page**
     window.location.href = "../pages/payment.html"; // Assuming this is the path
-
-    // We remove the old logic
-    // alert("Order placed successfully!");
-    // cartItems = [];
-    // localStorage.removeItem("data_card");
-    // displayCartItems();
-    // panier_container.classList.remove("show");
   });
 } else if (card) {
   // Fallback for pages *without* a cart modal (like payment.html)
