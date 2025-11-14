@@ -16,13 +16,12 @@
       rel="stylesheet"
     />
 
-    <!-- Swiper CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
 
-    <!-- FIXED ULTRA SHARP SLIDER STYLES -->
+    <!-- Slider -->
     <style>
       * {
         margin: 0;
@@ -30,13 +29,11 @@
         box-sizing: border-box;
       }
 
-      /* Fixed Header Z-Index */
       .header {
         position: relative;
         z-index: 9999 !important;
       }
 
-      /* ULTRA SLIDER CONTAINER */
       .ultra-slider {
         position: relative;
         width: 100%;
@@ -57,7 +54,6 @@
         background: #000;
       }
 
-      /* IMAGE STYLES - SHARP & OPTIMIZED */
       .slide-bg {
         position: absolute;
         top: 0;
@@ -74,7 +70,6 @@
         transform: scale(1);
       }
 
-      /* GRADIENT OVERLAY */
       .gradient-overlay {
         position: absolute;
         top: 0;
@@ -90,7 +85,6 @@
         pointer-events: none;
       }
 
-      /* ANIMATED GRADIENT */
       .gradient-animated {
         position: absolute;
         top: -50%;
@@ -116,7 +110,6 @@
         }
       }
 
-      /* CONTENT CONTAINER */
       .slide-content {
         position: absolute;
         top: 50%;
@@ -129,7 +122,6 @@
         padding: 20px;
       }
 
-      /* SLIDE NUMBER */
       .slide-number {
         font-family: "Bebas Neue", sans-serif;
         font-size: clamp(120px, 15vw, 180px);
@@ -146,7 +138,6 @@
         user-select: none;
       }
 
-      /* SLIDE LABEL */
       .slide-label {
         display: inline-block;
         padding: 8px 24px;
@@ -164,7 +155,6 @@
         animation-delay: 0.2s;
       }
 
-      /* MAIN TITLE */
       .slide-title {
         font-family: "Oswald", sans-serif;
         font-size: clamp(48px, 8vw, 96px);
@@ -204,7 +194,6 @@
         text-shadow: 0 0 30px rgba(255, 157, 0, 0.5);
       }
 
-      /* DESCRIPTION */
       .slide-description {
         font-family: "Inter", sans-serif;
         font-size: clamp(14px, 2vw, 18px);
@@ -218,7 +207,6 @@
         animation-delay: 0.5s;
       }
 
-      /* CTA BUTTONS */
       .slide-cta-group {
         display: flex;
         gap: 20px;
@@ -297,7 +285,6 @@
         box-shadow: 0 10px 30px rgba(255, 157, 0, 0.2);
       }
 
-      /* ANIMATIONS */
       @keyframes fadeInUp {
         to {
           opacity: 1;
@@ -312,7 +299,6 @@
         }
       }
 
-      /* CUSTOM NAVIGATION */
       .custom-nav {
         position: absolute;
         bottom: 40px;
@@ -344,7 +330,6 @@
         transform: scale(1.1);
       }
 
-      /* SWIPER PAGINATION */
       .swiper-pagination {
         bottom: 120px !important;
       }
@@ -364,7 +349,6 @@
         background: #ff9d00;
       }
 
-      /* SLIDE COUNTER */
       .slide-counter {
         position: absolute;
         top: 50%;
@@ -383,7 +367,6 @@
         font-size: 32px;
       }
 
-      /* SOCIAL LINKS */
       .social-links {
         position: absolute;
         top: 50%;
@@ -415,7 +398,6 @@
         transform: translateX(5px);
       }
 
-      /* RESPONSIVE */
       @media (max-width: 768px) {
         .ultra-slider {
           height: 70vh;
@@ -469,16 +451,14 @@
   <body class="bg-black text-white">
     <header class="header"></header>
 
-    <!-- FIXED ULTRA SHARP SLIDER -->
     <section class="ultra-slider">
-      <!-- Social Links -->
+
       <div class="social-links">
         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
       </div>
 
-      <!-- Slide Counter -->
       <div class="slide-counter">
         <span class="counter-current">01</span> / 05
       </div>
@@ -512,7 +492,7 @@
               </p>
               <div class="slide-cta-group">
                 <button class="btn-primary">ORDER NOW</button>
-                <a href="#menu" class="btn-secondary">VIEW MENU</a>
+                <a href="./pages/product.html" class="btn-secondary">VIEW MENU</a>
               </div>
             </div>
           </div>
@@ -544,7 +524,7 @@
               </p>
               <div class="slide-cta-group">
                 <button class="btn-primary">ORDER NOW</button>
-                <a href="#menu" class="btn-secondary">BBQ MENU</a>
+                <a href="./pages/product.html" class="btn-secondary">BBQ MENU</a>
               </div>
             </div>
           </div>
@@ -576,7 +556,7 @@
               </p>
               <div class="slide-cta-group">
                 <button class="btn-primary">ORDER NOW</button>
-                <a href="#menu" class="btn-secondary">PASTA & PIZZA</a>
+                <a href="./pages/product.html" class="btn-secondary">PASTA & PIZZA</a>
               </div>
             </div>
           </div>
@@ -608,7 +588,7 @@
               </p>
               <div class="slide-cta-group">
                 <button class="btn-primary">ORDER NOW</button>
-                <a href="#track" class="btn-secondary">TRACK ORDER</a>
+                <a href="./pages/product.html" class="btn-secondary">TRACK ORDER</a>
               </div>
             </div>
           </div>
@@ -640,7 +620,7 @@
               </p>
               <div class="slide-cta-group">
                 <button class="btn-primary">RESERVE TABLE</button>
-                <a href="#wine" class="btn-secondary">WINE PAIRING</a>
+                <a href="./pages/product.html" class="btn-secondary">WINE PAIRING</a>
               </div>
             </div>
           </div>
@@ -826,7 +806,7 @@
 
         <div class="mt-10 flex justify-center">
           <a
-            href="#"
+            href="./pages/product.html"
             class="inline-block rounded-full bg-[#FF9D00] px-8 py-3 text-lg font-semibold text-white hover:opacity-90"
           >
             Order Now
@@ -862,7 +842,7 @@
 
         <div class="mt-10 flex justify-center">
           <a
-            href="#"
+            href="./pages/propos.html"
             class="inline-block rounded-full bg-[#FF9D00] px-8 py-3 text-lg font-semibold text-white hover:opacity-90"
           >
             Contact Us
